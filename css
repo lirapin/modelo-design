@@ -1,303 +1,929 @@
-/* ===== VARIÁVEIS DE CORES E ESTILOS ===== */
-:root {
-  --primary-color: #2e7d32;
-  --primary-light: #4caf50;
-  --primary-dark: #1b5e20;
-  --secondary-color: #e8f5e9;
-  --accent-color: #81c784;
-  --text-color: #333;
-  --text-light: #666;
-  --border-radius: 8px;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal NODES - Rio de Janeiro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ===== VARIÁVEIS DE CORES E ESTILOS ===== */
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary-color: #e8f5e9;
+            --accent-color: #81c784;
+            --text-color: #333;
+            --text-light: #666;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
-/* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
-.verde-profissional * {
-  box-sizing: border-box;
-}
+        /* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
+        .verde-profissional * {
+            box-sizing: border-box;
+        }
 
-.verde-profissional {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f1f8e9, #e8f5e9);
-  color: var(--text-color);
-  line-height: 1.6;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+        .verde-profissional {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f1f8e9, #e8f5e9);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* ===== LAYOUT CONTAINER ===== */
-.container-verde {
-  max-width: 900px;
-  width: 100%;
-}
+        /* ===== LAYOUT CONTAINER ===== */
+        .container-verde {
+            max-width: 1200px;
+            width: 100%;
+        }
 
-/* ===== HEADER ===== */
-.header-verde {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 20px;
-}
+        /* ===== HEADER ===== */
+        .header-verde {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
 
-.titulo-principal {
-  color: var(--primary-dark);
-  text-transform: uppercase;
-  font-size: 28px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
+        .titulo-principal {
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-.subtitulo-verde {
-  color: var(--text-light);
-  font-size: 16px;
-}
+        .subtitulo-verde {
+            color: var(--text-light);
+            font-size: 16px;
+        }
 
-/* ===== CARDS ===== */
-.card-verde {
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 25px;
-  margin-bottom: 25px;
-  transition: var(--transition);
-  width: 100%;
-}
+        /* ===== NAVEGAÇÃO ===== */
+        .navegacao-verde {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
 
-.card-verde:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
+        .nav-link-verde {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
 
-.titulo-secao {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  font-size: 22px;
-}
+        .nav-link-verde:hover, .nav-link-verde.ativo {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: var(--secondary-color);
+        }
 
-/* ===== FORMULÁRIOS ===== */
-.form-group-verde {
-  margin-bottom: 20px;
-}
+        /* ===== CARDS ===== */
+        .card-verde {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            width: 100%;
+        }
 
-.label-verde {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: var(--primary-dark);
-}
+        .card-verde:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
 
-.input-verde, .select-verde, .textarea-verde {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 16px;
-  transition: var(--transition);
-  background-color: #f9f9f9;
-}
+        .titulo-secao {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
 
-.input-verde:focus, .select-verde:focus, .textarea-verde:focus {
-  outline: none;
-  border-color: var(--primary-light);
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-  background-color: white;
-}
+        /* ===== FORMULÁRIOS ===== */
+        .form-group-verde {
+            margin-bottom: 20px;
+        }
 
-/* ===== BOTÕES ===== */
-.btn-primario {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
+        .label-verde {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
 
-.btn-primario:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-}
+        .input-verde, .select-verde, .textarea-verde {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
 
-.btn-secundario {
-  background: var(--accent-color);
-  color: var(--primary-dark);
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
+        .input-verde:focus, .select-verde:focus, .textarea-verde:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+            background-color: white;
+        }
 
-.btn-secundario:hover {
-  background: #66bb6a;
-}
+        /* ===== BOTÕES ===== */
+        .btn-primario {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-.btn-icone {
-  margin-right: 8px;
-}
+        .btn-primario:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
 
-.grupo-botoes {
-  display: flex;
-  gap: 15px;
-  margin-top: 25px;
-}
+        .btn-secundario {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-/* ===== LAYOUT EM GRID ===== */
-.linha-formulario {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
+        .btn-secundario:hover {
+            background: #66bb6a;
+        }
 
-.linha-formulario .form-group-verde {
-  flex: 1;
-  margin-bottom: 0;
-}
+        .btn-icone {
+            margin-right: 8px;
+        }
 
-/* ===== ESTADOS E UTILITÁRIOS ===== */
-.oculto {
-  display: none;
-}
+        .grupo-botoes {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
 
-.mensagem-erro {
-  color: #d32f2f;
-  font-size: 14px;
-  margin-top: 5px;
-  display: none;
-}
+        /* ===== LAYOUT EM GRID ===== */
+        .linha-formulario {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-.mensagem-sucesso {
-  color: var(--primary-color);
-  font-size: 14px;
-  margin-top: 5px;
-}
+        .linha-formulario .form-group-verde {
+            flex: 1;
+            margin-bottom: 0;
+        }
 
-.mensagem-info {
-  background-color: #e3f2fd;
-  border-left: 4px solid #2196f3;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  font-size: 14px;
-}
+        /* ===== ESTADOS E UTILITÁRIOS ===== */
+        .oculto {
+            display: none;
+        }
 
-/* ===== INDICADORES VISUAIS ===== */
-.indicador-status {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
+        .mensagem-erro {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
 
-.status-ativo {
-  background-color: var(--primary-light);
-}
+        .mensagem-sucesso {
+            color: var(--primary-color);
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
-.status-inativo {
-  background-color: #bdbdbd;
-}
+        .mensagem-info {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
 
-/* ===== FOOTER ===== */
-.footer-verde {
-  text-align: center;
-  margin-top: 40px;
-  color: var(--text-light);
-  font-size: 14px;
-  width: 100%;
-}
+        /* ===== INDICADORES VISUAIS ===== */
+        .indicador-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
 
-.assinatura {
-  text-align: center;
-  margin-top: 20px;
-  color: var(--text-light);
-  border-top: 1px solid var(--accent-color);
-  padding-top: 10px;
-  font-style: normal;
-}
+        .status-ativo {
+            background-color: var(--primary-light);
+        }
 
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 768px) {
-  .linha-formulario {
-    flex-direction: column;
-    gap: 0;
-  }
-  
-  .grupo-botoes {
-    flex-direction: column;
-  }
-  
-  .btn-primario, .btn-secundario {
-    width: 100%;
-  }
-  
-  .container-verde {
-    padding: 10px;
-  }
-  
-  .card-verde {
-    padding: 20px;
-  }
-}
+        .status-inativo {
+            background-color: #bdbdbd;
+        }
 
-/* ===== COMPONENTES ADICIONAIS ===== */
-.alerta {
-  padding: 15px;
-  border-radius: var(--border-radius);
-  margin-bottom: 20px;
-  border-left: 4px solid;
-}
+        /* ===== FOOTER ===== */
+        .footer-verde {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 14px;
+            width: 100%;
+        }
 
-.alerta-aviso {
-  background-color: #fff3e0;
-  border-left-color: #ff9800;
-  color: #e65100;
-}
+        .assinatura {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            border-top: 1px solid var(--accent-color);
+            padding-top: 10px;
+            font-style: normal;
+        }
 
-.alerta-sucesso {
-  background-color: var(--secondary-color);
-  border-left-color: var(--primary-color);
-  color: var(--primary-dark);
-}
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .linha-formulario {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .grupo-botoes {
+                flex-direction: column;
+            }
+            
+            .btn-primario, .btn-secundario {
+                width: 100%;
+            }
+            
+            .container-verde {
+                padding: 10px;
+            }
+            
+            .card-verde {
+                padding: 20px;
+            }
+            
+            .navegacao-verde {
+                flex-direction: column;
+            }
+            
+            .nav-link-verde {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+                border-left: 3px solid transparent;
+            }
+            
+            .nav-link-verde:hover, .nav-link-verde.ativo {
+                border-bottom: 1px solid #eee;
+                border-left: 3px solid var(--primary-color);
+            }
+        }
 
-.alerta-info {
-  background-color: #e3f2fd;
-  border-left-color: #2196f3;
-  color: #1565c0;
-}
+        /* ===== COMPONENTES ADICIONAIS ===== */
+        .alerta {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
 
-.etiqueta {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-left: 8px;
-}
+        .alerta-aviso {
+            background-color: #fff3e0;
+            border-left-color: #ff9800;
+            color: #e65100;
+        }
 
-.etiqueta-primaria {
-  background-color: var(--primary-color);
-  color: white;
-}
+        .alerta-sucesso {
+            background-color: var(--secondary-color);
+            border-left-color: var(--primary-color);
+            color: var(--primary-dark);
+        }
 
-.etiqueta-secundaria {
-  background-color: var(--accent-color);
-  color: var(--primary-dark);
-}
+        .alerta-info {
+            background-color: #e3f2fd;
+            border-left-color: #2196f3;
+            color: #1565c0;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .etiqueta-primaria {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .etiqueta-secundaria {
+            background-color: var(--accent-color);
+            color: var(--primary-dark);
+        }
+
+        /* ===== ESTILOS ESPECÍFICOS DO PORTAL ===== */
+        .grid-estatisticas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card-estatistica {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card-estatistica:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .icone-estatistica {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .valor-estatistica {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .rotulo-estatistica {
+            color: var(--text-light);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-resultados {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card-resultado {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .titulo-resultado {
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .valor-resultado {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-color);
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .tabela-verde {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .tabela-verde th, .tabela-verde td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tabela-verde th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .tabela-verde tr:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .container-graficos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card-grafico {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+        }
+
+        .titulo-grafico {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .historico-consultas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag-consulta {
+            background: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tag-consulta:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body class="verde-profissional">
+    <div class="container-verde">
+        <!-- Cabeçalho -->
+        <header class="header-verde">
+            <h1 class="titulo-principal">
+                <i class="fas fa-satellite-dish btn-icone"></i>
+                Portal NODES/RJ
+            </h1>
+            <p class="subtitulo-verde">Sistema de Consulta de Áreas - Rio de Janeiro</p>
+        </header>
+
+        <!-- Navegação -->
+        <nav class="navegacao-verde">
+            <a href="#" class="nav-link-verde ativo" data-pagina="dashboard">
+                <i class="fas fa-tachometer-alt btn-icone"></i>Dashboard
+            </a>
+            <a href="#" class="nav-link-verde" data-pagina="consulta">
+                <i class="fas fa-search btn-icone"></i>Consulta Rápida
+            </a>
+            <a href="#" class="nav-link-verde" data-pagina="analise">
+                <i class="fas fa-chart-bar btn-icone"></i>Análise Detalhada
+            </a>
+        </nav>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="pagina">
+            <div class="card-verde">
+                <h2 class="titulo-secao">Visão Geral do Sistema</h2>
+                
+                <div class="grid-estatisticas">
+                    <div class="card-estatistica">
+                        <div class="icone-estatistica">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="valor-estatistica" id="total-nodes">187</div>
+                        <div class="rotulo-estatistica">Total de NODES</div>
+                    </div>
+                    
+                    <div class="card-estatistica">
+                        <div class="icone-estatistica">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="valor-estatistica" id="total-areas">24</div>
+                        <div class="rotulo-estatistica">Áreas Mapeadas</div>
+                    </div>
+                    
+                    <div class="card-estatistica">
+                        <div class="icone-estatistica">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="valor-estatistica" id="total-operadoras">8</div>
+                        <div class="rotulo-estatistica">Operadoras</div>
+                    </div>
+                    
+                    <div class="card-estatistica">
+                        <div class="icone-estatistica">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="valor-estatistica" id="consultas-hoje">42</div>
+                        <div class="rotulo-estatistica">Consultas Hoje</div>
+                    </div>
+                </div>
+                
+                <div class="container-graficos">
+                    <div class="card-grafico">
+                        <h3 class="titulo-grafico">Distribuição por Área</h3>
+                        <canvas id="grafico-area"></canvas>
+                    </div>
+                    
+                    <div class="card-grafico">
+                        <h3 class="titulo-grafico">Consultas por Período</h3>
+                        <canvas id="grafico-tempo"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="linha-formulario">
+                <div class="card-verde" style="flex: 1; cursor: pointer;" data-pagina="consulta">
+                    <h3 class="titulo-secao">
+                        <i class="fas fa-search btn-icone"></i>Consulta Rápida
+                    </h3>
+                    <p>Busque por NODE, área ou contrato específico</p>
+                    <button class="btn-primario" style="margin-top: 15px;">
+                        <i class="fas fa-arrow-right btn-icone"></i>Acessar
+                    </button>
+                </div>
+                
+                <div class="card-verde" style="flex: 1; cursor: pointer;" data-pagina="analise">
+                    <h3 class="titulo-secao">
+                        <i class="fas fa-chart-bar btn-icone"></i>Análise Completa
+                    </h3>
+                    <p>Dados detalhados e relatórios avançados</p>
+                    <button class="btn-primario" style="margin-top: 15px;">
+                        <i class="fas fa-arrow-right btn-icone"></i>Acessar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consulta Rápida -->
+        <section id="consulta" class="pagina oculto">
+            <div class="card-verde">
+                <h2 class="titulo-secao">Consulta Rápida</h2>
+                <p>Busque informações específicas de NODES e Áreas</p>
+                
+                <div class="linha-formulario">
+                    <div class="form-group-verde" style="flex: 1;">
+                        <label class="label-verde" for="entrada-consulta">Termo de Busca</label>
+                        <input type="text" id="entrada-consulta" class="input-verde" placeholder="Digite VL1S, NOVA DIVISÃO, ou outro termo...">
+                    </div>
+                    <div class="form-group-verde" style="flex: 0 0 auto; align-self: flex-end;">
+                        <button id="botao-consulta" class="btn-primario">
+                            <i class="fas fa-search btn-icone"></i>Consultar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid-resultados">
+                    <div class="card-resultado">
+                        <div class="titulo-resultado">ÁREA</div>
+                        <div class="valor-resultado" id="resultado-area">-</div>
+                    </div>
+                    
+                    <div class="card-resultado">
+                        <div class="titulo-resultado">QUEBRA</div>
+                        <div class="valor-resultado" id="resultado-quebra">-</div>
+                    </div>
+                    
+                    <div class="card-resultado">
+                        <div class="titulo-resultado">NOVA DIVISÃO</div>
+                        <div class="valor-resultado" id="resultado-nova-divisao">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-verde">
+                <h3 class="titulo-secao">Consultas Recentes</h3>
+                <div class="historico-consultas" id="historico-consultas">
+                    <div class="tag-consulta">VL1S</div>
+                    <div class="tag-consulta">NOVA DIVISÃO</div>
+                    <div class="tag-consulta">ZONA SUL</div>
+                    <div class="tag-consulta">CENTRO</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Análise Detalhada -->
+        <section id="analise" class="pagina oculto">
+            <div class="card-verde">
+                <h2 class="titulo-secao">Análise Detalhada</h2>
+                <p>Explore todos os dados do sistema com filtros avançados</p>
+                
+                <div class="linha-formulario">
+                    <div class="form-group-verde">
+                        <label class="label-verde" for="filtro-area">Área</label>
+                        <select id="filtro-area" class="select-verde">
+                            <option value="">Todas as áreas</option>
+                            <option value="Zona Sul">Zona Sul</option>
+                            <option value="Zona Norte">Zona Norte</option>
+                            <option value="Zona Oeste">Zona Oeste</option>
+                            <option value="Centro">Centro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group-verde">
+                        <label class="label-verde" for="filtro-operadora">Operadora</label>
+                        <select id="filtro-operadora" class="select-verde">
+                            <option value="">Todas as operadoras</option>
+                            <option value="Claro">Claro</option>
+                            <option value="Vivo">Vivo</option>
+                            <option value="Oi">Oi</option>
+                            <option value="TIM">TIM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group-verde">
+                        <label class="label-verde" for="filtro-node">NODE</label>
+                        <input type="text" id="filtro-node" class="input-verde" placeholder="Filtrar por NODE...">
+                    </div>
+                </div>
+                
+                <div class="grupo-botoes">
+                    <button id="botao-exportar-csv" class="btn-secundario">
+                        <i class="fas fa-file-csv btn-icone"></i>Exportar CSV
+                    </button>
+                    <button id="botao-exportar-pdf" class="btn-secundario">
+                        <i class="fas fa-file-pdf btn-icone"></i>Exportar PDF
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card-verde">
+                <h3 class="titulo-secao">Registros do Sistema</h3>
+                
+                <div class="tabela-container">
+                    <table class="tabela-verde">
+                        <thead>
+                            <tr>
+                                <th>NODE</th>
+                                <th>ÁREA</th>
+                                <th>OPERADORA</th>
+                                <th>CONTRATO</th>
+                                <th>BAIRRO</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpo-tabela">
+                            <!-- Dados serão preenchidos via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="footer-verde">
+            <div class="assinatura">
+                &copy; 2023 Portal NODES/RJ - Sistema de consulta e análise de NODES e áreas do Rio de Janeiro
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Dados de exemplo baseados na planilha
+        const baseDados = [
+            { node: "VL1S", area: "Zona Sul", quebra: "Setor A", nova_divisao: "Nova Zona 1", operadora: "Claro", contrato: "CT2024001", bairro: "Copacabana", cep: "22000-000", status: "Ativo" },
+            { node: "VL2S", area: "Zona Sul", quebra: "Setor B", nova_divisao: "Nova Zona 1", operadora: "Vivo", contrato: "CT2024002", bairro: "Ipanema", cep: "22400-000", status: "Ativo" },
+            { node: "VL3S", area: "Zona Sul", quebra: "Setor C", nova_divisao: "Nova Zona 1", operadora: "Oi", contrato: "CT2024003", bairro: "Leblon", cep: "22430-000", status: "Ativo" },
+            { node: "ZN1N", area: "Zona Norte", quebra: "Setor D", nova_divisao: "Nova Zona 2", operadora: "TIM", contrato: "CT2024004", bairro: "Tijuca", cep: "20520-000", status: "Ativo" },
+            { node: "ZN2N", area: "Zona Norte", quebra: "Setor E", nova_divisao: "Nova Zona 2", operadora: "Claro", contrato: "CT2024005", bairro: "Vila Isabel", cep: "20541-000", status: "Manutenção" },
+            { node: "ZO1O", area: "Zona Oeste", quebra: "Setor F", nova_divisao: "Nova Zona 3", operadora: "Vivo", contrato: "CT2024006", bairro: "Barra da Tijuca", cep: "22775-000", status: "Ativo" },
+            { node: "ZO2O", area: "Zona Oeste", quebra: "Setor G", nova_divisao: "Nova Zona 3", operadora: "Oi", contrato: "CT2024007", bairro: "Recreio", cep: "22795-000", status: "Ativo" },
+            { node: "CT1C", area: "Centro", quebra: "Setor H", nova_divisao: "Nova Zona 4", operadora: "TIM", contrato: "CT2024008", bairro: "Centro", cep: "20000-000", status: "Ativo" },
+            { node: "CT2C", area: "Centro", quebra: "Setor I", nova_divisao: "Nova Zona 4", operadora: "Claro", contrato: "CT2024009", bairro: "Lapa", cep: "20000-000", status: "Ativo" },
+            { node: "NOVA DIVISÃO", area: "Zona Sul", quebra: "Setor J", nova_divisao: "Nova Zona 5", operadora: "Vivo", contrato: "CT2024010", bairro: "Botafogo", cep: "22250-000", status: "Ativo" }
+        ];
+
+        // Navegação entre páginas
+        document.querySelectorAll('.nav-link-verde, .card-verde[data-pagina]').forEach(elemento => {
+            elemento.addEventListener('click', function() {
+                const paginaId = this.getAttribute('data-pagina') || 'dashboard';
+                
+                // Atualizar navegação
+                document.querySelectorAll('.nav-link-verde').forEach(link => {
+                    link.classList.remove('ativo');
+                });
+                this.classList.add('ativo');
+                
+                // Mostrar página selecionada
+                document.querySelectorAll('.pagina').forEach(pagina => {
+                    pagina.classList.add('oculto');
+                });
+                document.getElementById(paginaId).classList.remove('oculto');
+            });
+        });
+
+        // Consulta Rápida
+        document.getElementById('botao-consulta').addEventListener('click', realizarConsulta);
+        document.getElementById('entrada-consulta').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') realizarConsulta();
+        });
+
+        // Histórico de consultas
+        document.querySelectorAll('.tag-consulta').forEach(tag => {
+            tag.addEventListener('click', function() {
+                document.getElementById('entrada-consulta').value = this.textContent;
+                realizarConsulta();
+            });
+        });
+
+        function realizarConsulta() {
+            const termo = document.getElementById('entrada-consulta').value.trim().toUpperCase();
+            if (!termo) return;
+
+            const resultado = baseDados.find(item => 
+                item.node === termo || 
+                item.area.toUpperCase().includes(termo) ||
+                item.nova_divisao.toUpperCase().includes(termo)
+            );
+
+            if (resultado) {
+                document.getElementById('resultado-area').textContent = resultado.area;
+                document.getElementById('resultado-quebra').textContent = resultado.quebra;
+                document.getElementById('resultado-nova-divisao').textContent = resultado.nova_divisao;
+                
+                // Adicionar ao histórico se não existir
+                const historicoConsultas = document.getElementById('historico-consultas');
+                const tagsExistentes = Array.from(historicoConsultas.querySelectorAll('.tag-consulta'))
+                    .map(tag => tag.textContent);
+                
+                if (!tagsExistentes.includes(termo)) {
+                    const novaTag = document.createElement('div');
+                    novaTag.className = 'tag-consulta';
+                    novaTag.textContent = termo;
+                    novaTag.addEventListener('click', function() {
+                        document.getElementById('entrada-consulta').value = this.textContent;
+                        realizarConsulta();
+                    });
+                    historicoConsultas.appendChild(novaTag);
+                }
+            } else {
+                document.getElementById('resultado-area').textContent = 'Não encontrado';
+                document.getElementById('resultado-quebra').textContent = 'Não encontrado';
+                document.getElementById('resultado-nova-divisao').textContent = 'Não encontrado';
+            }
+        }
+
+        // Preencher tabela de análise
+        function preencherTabela(dados = baseDados) {
+            const corpoTabela = document.getElementById('corpo-tabela');
+            corpoTabela.innerHTML = '';
+            
+            dados.forEach(item => {
+                const tr = document.createElement('tr');
+                
+                // Definir classe de status
+                let classeStatus = 'status-ativo';
+                let textoStatus = 'Ativo';
+                if (item.status === 'Manutenção') {
+                    classeStatus = 'status-inativo';
+                    textoStatus = 'Manutenção';
+                }
+                
+                tr.innerHTML = `
+                    <td>${item.node}</td>
+                    <td>${item.area}</td>
+                    <td>${item.operadora}</td>
+                    <td>${item.contrato}</td>
+                    <td>${item.bairro}</td>
+                    <td>
+                        <span class="indicador-status ${classeStatus}"></span>
+                        ${textoStatus}
+                    </td>
+                `;
+                corpoTabela.appendChild(tr);
+            });
+        }
+
+        // Filtros da análise
+        document.getElementById('filtro-area').addEventListener('change', aplicarFiltros);
+        document.getElementById('filtro-operadora').addEventListener('change', aplicarFiltros);
+        document.getElementById('filtro-node').addEventListener('input', aplicarFiltros);
+
+        function aplicarFiltros() {
+            const areaFiltro = document.getElementById('filtro-area').value;
+            const operadoraFiltro = document.getElementById('filtro-operadora').value;
+            const nodeFiltro = document.getElementById('filtro-node').value.toLowerCase();
+            
+            const dadosFiltrados = baseDados.filter(item => {
+                return (!areaFiltro || item.area === areaFiltro) &&
+                       (!operadoraFiltro || item.operadora === operadoraFiltro) &&
+                       (!nodeFiltro || item.node.toLowerCase().includes(nodeFiltro));
+            });
+            
+            preencherTabela(dadosFiltrados);
+        }
+
+        // Gráficos do Dashboard
+        function inicializarGraficos() {
+            // Gráfico de distribuição por área
+            const contextoArea = document.getElementById('grafico-area').getContext('2d');
+            const contagemAreas = {};
+            baseDados.forEach(item => {
+                contagemAreas[item.area] = (contagemAreas[item.area] || 0) + 1;
+            });
+            
+            new Chart(contextoArea, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(contagemAreas),
+                    datasets: [{
+                        data: Object.values(contagemAreas),
+                        backgroundColor: ['#2e7d32', '#4caf50', '#81c784', '#a5d6a7', '#c8e6c9']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+            
+            // Gráfico de consultas por período
+            const contextoTempo = document.getElementById('grafico-tempo').getContext('2d');
+            new Chart(contextoTempo, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Consultas',
+                        data: [120, 190, 300, 500, 200, 300, 400, 480, 362, 540, 380, 290],
+                        borderColor: '#2e7d32',
+                        backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Exportação
+        document.getElementById('botao-exportar-csv').addEventListener('click', function() {
+            alert('Funcionalidade de exportação CSV em desenvolvimento');
+        });
+
+        document.getElementById('botao-exportar-pdf').addEventListener('click', function() {
+            alert('Funcionalidade de exportação PDF em desenvolvimento');
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            preencherTabela();
+            inicializarGraficos();
+        });
+    </script>
+</body>
+</html>
